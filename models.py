@@ -17,11 +17,7 @@ class Note(Model):
         database = db
 
     def html(self):
-        html = parse_html(
-            markdown(self.content),
-            oembed,
-            maxwidth=300,
-            urlize_all=True)
+        html = markdown(self.content)
         return Markup(html)
 
     @classmethod
