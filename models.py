@@ -2,10 +2,10 @@ import datetime
 
 from flask import Markup
 from markdown import markdown
-from micawber import parse_html
 from peewee import *
+from pyembed.markdown import PyEmbedMarkdown
 
-from app import db, oembed
+from app import db
 
 
 class Note(Model):
@@ -17,7 +17,7 @@ class Note(Model):
         database = db
 
     def html(self):
-        html = markdown(self.content)
+        html = markdown(self.content, extensions=[PyEmbedMarkdown()])
         return Markup(html)
 
     @classmethod
