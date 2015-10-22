@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calepin</title>
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', filename='js/jquery-1.11.3.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/masonry.pkgd.js') }}"></script>
+  </head>
+  <body>
+    <div class="container content">
+      <div class="page-header">
+        <h1>Calepin</h1>
+        <small>[!embed?max_width=300]</small>
+      </div>
+      <div class=metanav>
+  {% if not session.logged_in %}
+    <a href="{{ url_for('login') }}">log in</a>
+  {% else %}
+    <a href="{{ url_for('logout') }}">log out</a>
+  {% endif %}
+  </div>
+  {% for message in get_flashed_messages() %}
+    <div class="flash alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>{{ message }}</div>
+  {% endfor %}
+      <form action="." class="form" id="note-form" method="post">
+        <button class="btn btn-primary btn-xs" type="submit">
+          <span class="glyphicon glyphicon-plus"></span> Add Note
+        </button>
+        <textarea class="form-control" id="content" name="content"></textarea>
+      </form>
+      <ul class="list-unstyled notes js-masonry" data-masonry-options='{ "itemSelector": ".note"}'>
+        {% for note in notes %}
+          {% include "note.html" %}
+        {% endfor %}
+      </ul>
+      <div style="clear:both;"></div>
+    </div>
+  </body>
+</html>
