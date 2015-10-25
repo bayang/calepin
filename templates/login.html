@@ -6,26 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Calepin</title>
     <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/site.css') }}" rel="stylesheet">
     <script src="{{ url_for('static', filename='js/jquery-1.11.3.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
     <script src="{{ url_for('static', filename='js/imagesloaded.pkgd.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/masonry.pkgd.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/notes.js') }}"></script>
-  </head>
+    </head>
   <body>
 {% block body %}
   <h2>Login</h2>
   {% if error %}<p class="alert alert-warning error"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error:</strong> {{ error }}{% endif %}
-  <form action="{{ url_for('login') }}" method=post>
+  <form action="{{ url_for('login') }}" method="post">
     <dl>
-      <dt>Username:
-      <dd><input type=text name=username>
-      <dt>Password:
-      <dd><input type=password name=password>
-      <dd><input type=submit value=Login>
+      <dt>Username:</dt>
+      <dd><input type="text" name="username"></dd>
+      <dt>Password:</dt>
+      <dd><input type="password" name="password"></dd>
+      <dd><input type="submit" value="Login"></dd>
     </dl>
-  </form>
+</form></p>
 {% endblock %}
 </body>
 </html>

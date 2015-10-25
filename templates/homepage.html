@@ -15,9 +15,9 @@
     <div class="container content">
       <div class="page-header">
         <h1>Calepin</h1>
-        <small>[!embed?max_width=300]</small>
+        <small>[!embed?max_width=300]()</small>
       </div>
-      <div class=metanav>
+      <div class="metanav">
   {% if not session.logged_in %}
     <a href="{{ url_for('login') }}">log in</a>
   {% else %}
