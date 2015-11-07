@@ -1,4 +1,3 @@
-import hashlib
 from flask import abort, render_template, request, redirect, url_for, flash, \
     session
 
