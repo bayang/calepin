@@ -26,6 +26,21 @@ def homepage():
     return render_template('homepage.html', notes=notes)
 
 
+@app.route('/edit/<int:pk>/', methods=['GET', 'POST'])
+def edit_note(pk):
+    try:
+        note = Note.get(Note.id == pk)
+    except Note.DoesNotExist:
+        abort(404)
+    if request.method == 'POST':
+        if request.form.get('content'):
+            note.content = request.form.get('content')
+            note.save()
+            flash('Entry edited')
+            return redirect(url_for('homepage'))
+    return render_template('edit.html', note=note)
+
+
 @app.route('/archive/<int:pk>/', methods=['GET', 'POST'])
 def archive_note(pk):
     try:

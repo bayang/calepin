@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calepin</title>
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', filename='js/jquery-1.11.3.js') }}"></script>
+    <script src="{{ url_for('static', filename='/js/bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/masonry.pkgd.js') }}"></script>
+    </head>
+  <body>
+{% block body %}
+<div class="container">
+    <h2><a href="{{ url_for('homepage') }}"Edit</a></h2>
+          <div class="row">
+            <div class="col-md-10">
+            <h2><a href="{{ url_for('homepage') }}">Edit</a></h2>
+  {% if error %}<p class="alert alert-warning error"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error:</strong> {{ error }}</p>{% endif %}
+  <form action="." class="form" id="note-form" method="post">
+    <button class="btn btn-primary btn-xs" type="submit">
+      <span class="glyphicon glyphicon-plus"></span> Submit changes
+    </button>
+    <textarea class="form-control" id="content" name="content">{{ note.content }}</textarea>
+</form>
+</div>
+</div>
+</div>
+{% endblock %}
+</body>
+</html>
