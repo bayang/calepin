@@ -1,7 +1,7 @@
 <li class="note col-xs-12 col-sm-6 col-lg-4">
   <div class="panel panel-primary">
     <div class="panel-heading">
-      {{ note.timestamp.strftime('%b %d, %Y %I:%M%p').lower() }}
+      {{ note.timestamp.strftime('%b %d %Y %H:%M').lower() }}
       <a
         class="btn btn-default btn-xs archive-note pull-right"
         data-note="{{ note.id }}"
@@ -9,7 +9,7 @@
       <a
         class="btn btn-default btn-xs edit-note pull-right"
         data-note="{{ note.id }}"
-        href="{{ url_for('edit_note', pk=note.id) }}"><span class="glyphicon glyphicon-edit"> edit</span></a>
+        href="{{ url_for('edit_note', pk=note.id) }}"><span class="glyphicon glyphicon-edit">edit</span></a>
     </div>
     <div class="panel-body">
       {{ note.html() }}

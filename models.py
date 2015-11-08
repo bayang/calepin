@@ -5,7 +5,7 @@ from markdown import markdown
 from peewee import *
 from pyembed.markdown import PyEmbedMarkdown
 from pyembed.core.consumer import PyEmbedConsumerError
-
+from requests.exceptions import MissingSchema
 from app import db
 
 
@@ -24,6 +24,11 @@ class Note(Model):
         except PyEmbedConsumerError as e:
             modif_note = self.content.replace(self.content[0:23], "<")
             modif_note = modif_note.replace(self.content[-1], ">")
+            html = markdown(modif_note)
+            return Markup(html)
+        except MissingSchema as e:
+            modif_note = self.content.replace(self.content[0:23], "")
+            modif_note = modif_note.replace(self.content[-1], "")
             html = markdown(modif_note)
             return Markup(html)
 

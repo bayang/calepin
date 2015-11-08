@@ -31,6 +31,12 @@
         <button class="btn btn-primary btn-xs" type="submit">
           <span class="glyphicon glyphicon-plus"></span> Add Note
         </button>
+        <button class="btn btn-primary btn-xs pull-right" id="rightchevbutton" type="button">
+            <span class="glyphicon glyphicon-chevron-right"></span></button>
+        <button class="btn btn-primary btn-xs pull-right" id="leftchevbutton" type="button">
+            <span class="glyphicon glyphicon-chevron-left"></span></button>
+        <button class="btn btn-primary btn-xs pull-right" id="embedbutton" type="button">
+            <span class="glyphicon glyphicon-picture"></span></button>
         <textarea class="form-control" id="content" name="content"></textarea>
       </form>
       <ul class="list-unstyled notes js-masonry" data-masonry-options='{ "itemSelector": ".note"}'>
@@ -40,5 +46,6 @@
       </ul>
       <div style="clear:both;"></div>
     </div>
+    <script src="{{ url_for('static', filename='js/site.js') }}"></script>
   </body>
 </html>
